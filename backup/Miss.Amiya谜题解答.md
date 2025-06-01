@@ -23,7 +23,7 @@
 该部分要求解谜者涉猎广泛。
 - 最上方的绳子来自[《锈湖》](https://baike.baidu.com/item/锈湖/63002230)。
 - 左侧的花来自游戏王5D's的一张卡牌[芳香风暴](https://baike.baidu.com/item/芳香风暴/5191879)。
-`Gmeek-html<img src="https://bkimg.cdn.bcebos.com/pic/63d9f2d3572c11df8b6e7531642762d0f703c261?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_745">`
+`Gmeek-html<img src="https://bkimg.cdn.bcebos.com/pic/63d9f2d3572c11df8b6e7531642762d0f703c261?x-bce-process=image/format,f_auto/watermark,image_d2F0ZXIvYmFpa2UyNzI,g_7,xp_5,yp_5,P_20/resize,m_lfit,limit_1,h_1080">`
 - 左下角的图片截取自干员柏喙(Bibeak)的皮肤立绘。
 `Gmeek-html<img src="https://media.prts.wiki/thumb/7/7e/%E7%AB%8B%E7%BB%98_%E6%9F%8F%E5%96%99_skin1.png/600px-%E7%AB%8B%E7%BB%98_%E6%9F%8F%E5%96%99_skin1.png?20210108104059">`
 - 右下角的图案来自《以撒的结合：重生》中的[收获符文](https://isaac.huijiwiki.com/wiki/K33)。
