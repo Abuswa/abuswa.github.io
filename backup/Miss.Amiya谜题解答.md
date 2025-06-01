@@ -50,6 +50,7 @@
 - `KAPOK`
 - `pan`(或者`gan`，`qan`等等)
 - 小电视符号，`#`号
+
 可以拼出一个存在的方舟账号：`kapok#2399`。
 > [!NOTE]
 > 方舟账号名一般为`XXX#1234`的形式
@@ -59,7 +60,7 @@
 `1dl73rd2JL_WKUWBdJq7LHA`
 这像是一段URL，它应当接在某段网址之后。
 再看最后为数不多的信息，如果将某an看作`pan`，那么答案就呼之欲出了。
-进入网址：[pan.baidu.com/s/1dl73rd2JL_WKUWBdJq7LHA](pan.baidu.com/s/1dl73rd2JL_WKUWBdJq7LHA)。
+进入网址：[pan.baidu.com/s/1dl73rd2JL_WKUWBdJq7LHA](https://pan.baidu.com/s/1dl73rd2JL_WKUWBdJq7LHA)。
 竟然要提取码，我们还有最后的一段数字：
 `2226`。
 解谜完毕。
