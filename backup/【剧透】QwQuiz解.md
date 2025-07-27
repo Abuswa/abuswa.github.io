@@ -1,4 +1,4 @@
-
+***
 Quiz 1：直接输入“密码”或者“password”
 Quiz 2：将网址中的quiz-2改成quiz-3
 Quiz 3：查看源代码或者控制台发现“thefour”字样，所以将网址中quiz-3改为thefour
