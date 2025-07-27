@@ -1,5 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Abuswa的第五维度</title><link>https://abuswa.github.io</link><description>用文字对抗遗忘。</description><copyright>Abuswa的第五维度</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/214158683?v=4&amp;size=64</url><title>avatar</title><link>https://abuswa.github.io</link></image><lastBuildDate>Sun, 13 Jul 2025 01:25:32 +0000</lastBuildDate><managingEditor>Abuswa的第五维度</managingEditor><ttl>60</ttl><webMaster>Abuswa的第五维度</webMaster><item><title>挑战16分钟全对一套英语客观题(2)</title><link>https://abuswa.github.io/post/6.html</link><description>Gmeek-html&lt;iframe src='//player.bilibili.com/player.html?isOutside=true&amp;aid=114801002944170&amp;bvid=BV1Ty39zGEzu&amp;cid=30870536667&amp;p=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true' width='100%' height='460px'&gt;&lt;/iframe&gt;。</description><guid isPermaLink="true">https://abuswa.github.io/post/6.html</guid><pubDate>Sun, 13 Jul 2025 01:25:05 +0000</pubDate></item><item><title>2025全国II卷数学T19解</title><link>https://abuswa.github.io/post/5.html</link><description>### 题目
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Abuswa的第五维度</title><link>https://abuswa.github.io</link><description>用文字对抗遗忘。</description><copyright>Abuswa的第五维度</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/214158683?v=4&amp;size=64</url><title>avatar</title><link>https://abuswa.github.io</link></image><lastBuildDate>Sun, 27 Jul 2025 02:33:30 +0000</lastBuildDate><managingEditor>Abuswa的第五维度</managingEditor><ttl>60</ttl><webMaster>Abuswa的第五维度</webMaster><item><title>【剧透】QwQuiz解</title><link>https://abuswa.github.io/post/7.html</link><description>
+Quiz 1：直接输入“密码”或者“password”
+Quiz 2：将网址中的quiz-2改成quiz-3
+Quiz 3：查看源代码或者控制台发现“thefour”字样，所以将网址中quiz-3改为thefour
+Quiz 4：-2147483648～2147483647是int数据范围，将thefour改为int
+Quiz 5：before bilibili表示b站前身，也就是mikufans
+Quiz 6：在电脑上看到标题Quiz 6变成了奇怪的字体，这种字体实际上是Wingdings
+Quiz 7：查看源代码发现提示“The Color”，答案为white
+Quiz 8：将这种加密方式搜索后发现是rot13，答案为rot13
+Quiz 9（旧）：这是碧蓝航线中御三家的名称，答案为z23
+Quiz 9（新）：这是麦当劳中特有的鸡块命名，图中问的鸡块叫作bone
+Quiz 10：这是Phigros曲目中《Credits》的曲绘，下方的韵律对应着歌曲中的一段，我们需要填写这一段对应的歌词，答案为corporation
+Quiz 11：加号两侧是两个RGB颜色，我们将对应位相加得到255 255 0颜色，也就是黄色，答案为yellow
+Quiz 12：找规律，发现从10开始，每一个数等于前面第2个数x（前面第3个数-前面第一个数），计算得到答案为1650，答案为n1650
+Quiz 13：Quiz 12的remember打成了remenber，答案为remember
+Quiz 14：这是键盘上的键位，insert和pageup两个键的中间是home，而这里是想让我们填两个home的中间是什么。</description><guid isPermaLink="true">https://abuswa.github.io/post/7.html</guid><pubDate>Sun, 27 Jul 2025 01:47:15 +0000</pubDate></item><item><title>挑战16分钟全对一套英语客观题(2)</title><link>https://abuswa.github.io/post/6.html</link><description>Gmeek-html&lt;iframe src='//player.bilibili.com/player.html?isOutside=true&amp;aid=114801002944170&amp;bvid=BV1Ty39zGEzu&amp;cid=30870536667&amp;p=1' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true' width='100%' height='460px'&gt;&lt;/iframe&gt;。</description><guid isPermaLink="true">https://abuswa.github.io/post/6.html</guid><pubDate>Sun, 13 Jul 2025 01:25:05 +0000</pubDate></item><item><title>2025全国II卷数学T19解</title><link>https://abuswa.github.io/post/5.html</link><description>### 题目
 ![Image](https://github.com/user-attachments/assets/9cd25757-06ad-4e5b-a97c-6ccd9a41034e)
 ***
 ### 解
@@ -13,6 +28,4 @@
 画面中的阿米娅兔兔说的是：
 `Doctor，do you think terra is real`
 &gt; [!NOTE]
-&gt; 这句话实为一句梗。</description><guid isPermaLink="true">https://abuswa.github.io/post/3.html</guid><pubDate>Sun, 01 Jun 2025 07:38:55 +0000</pubDate></item><item><title>Test</title><link>https://abuswa.github.io/post/1.html</link><description>测试用，此外没啥用了
-`Gmeek-html&lt;img src='https://img0.baidu.com/it/u=1076972276,2617167947&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=500&amp;h=547'&gt;`
-。</description><guid isPermaLink="true">https://abuswa.github.io/post/1.html</guid><pubDate>Sat, 31 May 2025 13:14:50 +0000</pubDate></item><item><title>【关于】这是什么网站？</title><link>https://abuswa.github.io/about.html</link><description>Abuswa于2025年5月31日刷B站时偶遇github教程，拼尽全力无法自拔。</description><guid isPermaLink="true">https://abuswa.github.io/about.html</guid><pubDate>Sat, 31 May 2025 15:06:00 +0000</pubDate></item></channel></rss>
+&gt; 这句话实为一句梗。</description><guid isPermaLink="true">https://abuswa.github.io/post/3.html</guid><pubDate>Sun, 01 Jun 2025 07:38:55 +0000</pubDate></item><item><title>【关于】这是什么网站？</title><link>https://abuswa.github.io/about.html</link><description>Abuswa于2025年5月31日刷B站时偶遇github教程，拼尽全力无法自拔。</description><guid isPermaLink="true">https://abuswa.github.io/about.html</guid><pubDate>Sat, 31 May 2025 15:06:00 +0000</pubDate></item></channel></rss>
