@@ -41,12 +41,7 @@ Quiz 19：钥匙指key，黑板指board，拼起来就是keyboard。上世纪法
 
 Quiz 20：sbsp指海绵宝宝，ABCDEFG是简谱，该歌曲为spongehenge
 
-Quiz 21：一段没有符号的HTML代码，加上尖括号：
-<table><tr><td></td><td bgcolor=”black”>
-</td><td></td><tr></tr><td></td><td></td><td bgcolor=”black”>
-</td><tr></tr><td bgcolor=”black”></td><td bgcolor=”black”>
-</td><td bgcolor=”black”></td><tr><table>
-开头结尾的table和tr为固定格式，两个td表示空格，两个tr表示换行。而bgcolor就是背景颜色，这里是用黑色。
+Quiz 21：一段没有符号的HTML代码，加上尖括号。开头结尾的table和tr为固定格式，两个td表示空格，两个tr表示换行。而bgcolor就是背景颜色，这里是用黑色。
 根据提示cell，把空格替换为□，有背景颜色的就替换为■。
 □■□
 □□■
