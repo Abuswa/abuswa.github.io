@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abusquiz 02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0e14;
+            color: #e6edf3;
+            min-height: 100vh;
+            font-family: "Corbel Light","Segoe UI Variable Display Semilight";
+            overflow-x: hidden;
+        }
+        
+        /* 左上角标题 */
+        .header {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #58a6ff;
+            text-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+        }
+        
+        /* 中央内容区域 - 上移 */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: translateY(-80px); /* 内容整体上移 */
+        }
+        
+        /* 关卡号码 */
+        .level {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .level-number {
+            font-size: 80px;
+            font-weight: 400;
+            color: #58a6ff;
+        }
+        
+        /* 谜题内容 */
+        .puzzle {
+            text-align: center;
+            font-size: 40px;
+            line-height: 1.7;
+            color: #c9d1d9;
+            white-space: pre-wrap;
+            padding: 0 30px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 22px;
+            }
+            
+            .level-number {
+                font-size: 44px;
+            }
+            
+            .puzzle {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            
+            .level-number {
+                font-size: 38px;
+            }
+            
+            .puzzle {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左上角标题 -->
+    <div class="header">
+        <div class="title">Abusquiz</div>
+    </div>
+    
+    <!-- 主要内容区域 -->
+    <div class="content">
+        <!-- 关卡号码 -->
+        <div class="level">
+            <div class="level-number">02</div>
+        </div>
+        
+        <!-- 谜题内容 -->
+        <div class="puzzle">
+            <p style="text-align: center;"><img src="https://abuswa.github.io/quiz2.png"></p>
+        </div>
+    </div>
+</body>
+</html>
