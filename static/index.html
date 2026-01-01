@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // 永久重定向 (301)
+        const targetDomain = "https://abusga.cn";
+        const currentPath = window.location.pathname;
+        
+        // 保留路径参数
+        const searchParams = window.location.search;
+        const hash = window.location.hash;
+        
+        // 构建完整的目标URL
+        let targetUrl = targetDomain;
+        if (currentPath !== '/AAA' && currentPath !== '/AAA/') {
+            targetUrl += currentPath.replace('/AAA', '');
+        }
+        if (searchParams) targetUrl += searchParams;
+        if (hash) targetUrl += hash;
+        
+        // 执行重定向
+        window.location.replace(targetUrl);
+        
+        // 如果是搜索引擎爬虫，提供meta重定向
+        document.write('<meta http-equiv="refresh" content="0; url=' + targetUrl + '">');
+    </script>
+    <title>重定向到 abusga.cn</title>
+</head>
+<body>
+    <p>正在跳转到 <a href="https://abusga.cn">abusga.cn</a>...</p>
+</body>
+</html>
