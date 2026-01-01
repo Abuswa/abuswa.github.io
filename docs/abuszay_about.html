@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于核心 | ABUSZAY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f3ff;
+            --secondary: #ff00ff;
+            --accent: #00ff9d;
+            --bg-dark: #0a0a1a;
+            --bg-darker: #050510;
+            --text: #e0e0ff;
+            --text-dim: #8a8aff;
+            --glow: 0 0 15px;
+            --neon-border: 1px solid rgba(0, 243, 255, 0.3);
+            --font-main: 'Orbitron', sans-serif;
+            --font-anime: 'Exo 2', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-darker);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 243, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 157, 0.05) 0%, transparent 15%);
+        }
+
+        /* 桌面端侧边栏 */
+        .nav-sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 80px;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: var(--neon-border);
+            box-shadow: var(--glow) rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-sidebar:hover {
+            width: 220px;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-darker);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            box-shadow: var(--glow) var(--primary);
+        }
+
+        .nav-sidebar:hover .logo {
+            transform: rotate(0deg);
+        }
+
+        .logo-text {
+            position: absolute;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            transition: opacity 0.3s ease 0.1s;
+        }
+
+        .nav-sidebar:hover .logo-text {
+            opacity: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            text-decoration: none;
+            color: var(--text-dim);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary);
+            transform: translateX(-10px);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .nav-item:hover::before {
+            transform: translateX(0);
+        }
+
+        .nav-item.active {
+            background: rgba(0, 243, 255, 0.15);
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        .nav-item.active::before {
+            transform: translateX(0);
+        }
+
+        .nav-icon {
+            font-size: 22px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .nav-text {
+            opacity: 0;
+            font-size: 16px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .nav-sidebar:hover .nav-text {
+            opacity: 1;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            margin-left: 80px;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景动画元素 */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 50px) rotate(90deg); }
+            50% { transform: translate(50px, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .about-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            z-index: 1;
+            border-bottom: var(--neon-border);
+            background: linear-gradient(180deg, 
+                rgba(0, 243, 255, 0.05) 0%, 
+                transparent 100%);
+        }
+
+        .about-hero-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            font-family: var(--font-anime);
+            font-size: 4em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .about-subtitle {
+            font-size: 1.8em;
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-family: var(--font-anime);
+            max-width: 800px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px;
+        }
+
+        .timeline-container {
+    position: relative;
+    margin: 100px 0;
+    padding: 40px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, 
+        transparent, 
+        var(--primary), 
+        var(--secondary), 
+        transparent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px var(--primary);
+    z-index: 1;
+}
+
+.timeline-items {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 100px;
+    width: 100%;
+    opacity: 1 !important; /* 强制显示 */
+    visibility: visible !important; /* 强制显示 */
+    display: flex;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: auto; /* 右侧 */
+    margin-right: 50%;
+    padding-right: 80px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: auto; /* 左侧 */
+    margin-left: 50%;
+    padding-left: 80px;
+}
+
+.timeline-content {
+    width: 45%;
+    min-width: 400px;
+    background: rgba(10, 10, 26, 0.9);
+    border: var(--neon-border);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 1 !important; /* 强制显示 */
+    visibility: visible !important; /* 强制显示 */
+    display: block !important; /* 强制显示 */
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
+    background: rgba(10, 10, 26, 0.95);
+}
+
+.timeline-year {
+    position: absolute;
+    top: -20px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: var(--bg-darker);
+    font-weight: 900;
+    font-size: 1.1em;
+    padding: 6px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 3;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+}
+
+.timeline-item:nth-child(odd) .timeline-year {
+    right: -40px;
+    transform: translateX(50%);
+}
+
+.timeline-item:nth-child(even) .timeline-year {
+    left: -40px;
+    transform: translateX(-50%);
+}
+
+.timeline-content h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-family: var(--font-anime);
+}
+
+.timeline-content p {
+    color: var(--text-dim);
+    line-height: 1.7;
+    font-size: 1em;
+}
+
+/* 时间线节点 */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    box-shadow: 0 0 20px var(--accent);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 157, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 157, 0); }
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .timeline-line {
+        left: 60px;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: calc(100% - 100px);
+        margin-left: 100px !important;
+        margin-right: 0 !important;
+        padding: 30px !important;
+        min-width: auto;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-year,
+    .timeline-item:nth-child(even) .timeline-year {
+        left: -60px;
+        right: auto;
+        transform: translateX(-50%);
+    }
+    
+    .timeline-dot {
+        left: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 30px;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-year,
+    .timeline-item:nth-child(even) .timeline-year {
+        left: -40px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        min-width: auto;
+        padding: 20px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.4em;
+    }
+}
+
+        .team-section {
+            margin: 100px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-card {
+            background: rgba(255, 0, 255, 0.05);
+            border: var(--neon-border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(255, 0, 255, 0.2);
+            background: rgba(255, 0, 255, 0.1);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--bg-darker);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .team-name {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-family: var(--font-anime);
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .team-desc {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .values-section {
+            margin: 100px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.2);
+        }
+
+        .value-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .value-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            margin: 100px 0;
+            background: rgba(0, 243, 255, 0.05);
+            border: var(--neon-border);
+            border-radius: 30px;
+            padding: 60px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 2em;
+            color: var(--primary);
+            min-width: 50px;
+        }
+
+        .contact-info h4 {
+            color: var(--text);
+            margin-bottom: 5px;
+            font-size: 1.3em;
+        }
+
+        .contact-info p {
+            color: var(--text-dim);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .about-content {
+                padding: 40px;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+            }
+            
+            .timeline-year {
+                left: 30px;
+                transform: translateX(0);
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+            
+            .about-hero {
+                padding: 0 20px;
+                min-height: 50vh;
+            }
+            
+            .about-title {
+                font-size: 2.5em;
+            }
+            
+            .about-subtitle {
+                font-size: 1.2em;
+            }
+            
+            .about-content {
+                padding: 20px;
+            }
+            
+            .contact-section {
+                padding: 30px;
+            }
+            
+            .team-grid,
+            .values-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 桌面端侧边栏 -->
+    <nav class="nav-sidebar">
+        <div class="logo-container">
+            <div class="logo">C</div>
+            <div class="logo-text">ABUSZAY</div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="abuszay.html" class="nav-item">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-text">主控面板 Main</div>
+            </a>
+            <a href="abuszay_settings.html" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-text">世界设定 Settings</div>
+            </a>
+            <a href="abuszay_posts.html" class="nav-item">
+                <div class="nav-icon">💎</div>
+                <div class="nav-text">纪实文字 Novels</div>
+            </a>
+            <a href="abuszay_gallery.html" class="nav-item">
+                <div class="nav-icon">🎨</div>
+                <div class="nav-text">图绘档案 Pictures</div>
+            </a>
+            <a href="abuszay_download.html" class="nav-item">
+                <div class="nav-icon">📥</div>
+                <div class="nav-text">数据下载 Datas</div>
+            </a>
+            <a href="https://abuswa.github.io" class="nav-item">
+                <div class="nav-icon">💻</div>
+                <div class="nav-text">第五维度 Abuswa's</div>
+            </a>
+            <a href="abuszay_about.html" class="nav-item active">
+                <div class="nav-icon">👁️</div>
+                <div class="nav-text">关于核心 About</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 背景动画元素 -->
+    <div class="bg-elements">
+        <div class="scan-line"></div>
+        <div class="floating-element" style="width: 300px; height: 300px; top: 10%; left: 20%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 200px; height: 200px; top: 40%; right: 10%; animation-delay: 5s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; bottom: 20%; left: 30%; animation-delay: 10s;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; top: 70%; right: 30%; animation-delay: 15s;"></div>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 关于页面英雄区域 -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <h1 class="about-title">关于核心</h1>
+                <p class="about-subtitle">
+                    <span style="color: var(--accent);">[系统记录]</span> 我们是跨越维度的科技集体，<br>
+                    来自Abusga星系，致力于将地球上所谓的科幻变为现实。
+                </p>
+            </div>
+        </section>
+
+        <!-- 关于内容 -->
+        <div class="about-content">
+            <!-- 我们的使命 -->
+            <section>
+                <h2 style="font-size: 2.5em; margin-bottom: 30px; color: var(--primary);">🚀 我们的使命</h2>
+                <div style="background: rgba(0, 243, 255, 0.05); border: var(--neon-border); border-radius: 20px; padding: 40px; margin: 40px 0;">
+                    <p style="font-size: 1.3em; line-height: 1.8; color: var(--text); text-align: center;">
+                        在<span style="color: var(--accent); font-weight: 700;">量子时代</span>的黎明，我们相信技术的本质是<br>
+                        <span style="color: var(--primary);">解放人类潜能，连接现实与可能</span>。<br><br>
+                        我们不是未来的创造者，而是未来<span style="color: var(--secondary);">早已存在之物的发现者</span>。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 发展历程 -->
+            <section class="timeline-container">
+                <h2 style="font-size: 2.5em; margin-bottom: 80px; color: var(--primary); text-align: center;">📜 发展历程</h2>
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">3020</div>
+                        <h3>Abusga星系的觉醒</h3>
+                        <p>在星系的实验室中，Abusga首次观测到量子意识场。这一发现彻底改变了我们对智能的理解，也为核心的诞生奠定了基础。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">3023</div>
+                        <h3>ABUSZAY核心的创立</h3>
+                        <p>来自不同维度的4位先驱者集结，正式成立Abuszay核心领导层。我们立下誓言：用科技连接所有智慧生命，打破物理与数字的界限。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">3024</div>
+                        <h3>技术的突破</h3>
+                        <p>成功实现首次维度怕实验，标志着我们正式掌握了在多维宇宙间自由移动的能力。这一年被称为"维度解放元年"。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">今时今日</div>
+                        <h3>成为跨维度领导者</h3>
+                        <p>ABUSZAY核心已在12个平行宇宙设立研究中心，服务超过500个文明。我们的技术正在重新定义什么是可能。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 核心团队 -->
+            <section class="team-section">
+                <h2 style="font-size: 2.5em; margin-bottom: 30px; color: var(--primary);">🧠 核心团队</h2>
+                <p style="font-size: 1.2em; color: var(--text-dim); margin-bottom: 40px; max-width: 800px;">
+                    我们是由Abusga,Abuslu,Abuswa,Abuski组成的跨维度团队。<br>
+                    每个成员都来自不同的时间线，但共享同一个愿景。
+                </p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">G</div>
+                        <div class="team-name">Abusga</div>
+                        <div class="team-role">创始人 & 首席领导人</div>
+                        <div class="team-desc">Abusga星系创始人。Abusga科技最高领导人。Abuszay最高管理层创始人，最高领导者。</div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">L</div>
+                        <div class="team-name">Abuslu</div>
+                        <div class="team-role">首席技术官</div>
+                        <div class="team-desc">Abusga星系首席。Abuszay管理层最高领导人。Abusga的忠诚追随者。</div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-avatar">W</div>
+                        <div class="team-name">Abuswa</div>
+                        <div class="team-role">首席科学领导者</div>
+                        <div class="team-desc">Abusga星系首席。Abusga星系科技部门最高领导人。Abusga科技协会主席。</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 核心价值观 -->
+            <section class="values-section">
+                <h2 style="font-size: 2.5em; margin-bottom: 30px; color: var(--primary);">🌟 核心价值观</h2>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">⚡</div>
+                        <h3 class="value-title">量子思维</h3>
+                        <p>我们相信所有可能性同时存在，创新来自于观测那些尚未坍缩的未来。</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🔗</div>
+                        <h3 class="value-title">维度平等</h3>
+                        <p>每个平行宇宙的智慧都同等重要，我们致力于建立跨维度的知识共享网络。</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🛡️</div>
+                        <h3 class="value-title">伦理优先</h3>
+                        <p>所有技术发展必须遵循跨维度伦理准则，确保技术服务于生命的进化。</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🌌</div>
+                        <h3 class="value-title">无限探索</h3>
+                        <p>宇宙的边界只存在于想象之中，我们的探索永无止境。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 联系我们 -->
+            <section class="contact-section">
+                <h2 style="font-size: 2.5em; margin-bottom: 30px; color: var(--primary); text-align: center;">📡 联系我们</h2>
+                <p style="font-size: 1.2em; color: var(--text-dim); text-align: center; margin-bottom: 50px;">
+                    无论你身处哪个维度，都可以通过以下方式找到我们。<br>
+                    <span style="color: var(--accent);">请注意：电磁波信息可能需要12-48小时进行跨维度传输。</span>
+                </p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-info">
+                            <h4>维度坐标</h4>
+                            <p>Abusga星系，第3象限<br>维度：7.3.2</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-info">
+                            <h4>量子通讯</h4>
+                            <p>频率：2020.319Hz<br>通道：ABUSZAY-Ω</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-info">
+                            <h4>相位邮件</h4>
+                            <p>abuswa@qq.com<br>(仅支持量子加密)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-info">
+                            <h4>时间窗口</h4>
+                            <p>全时间线24/7响应<br>平均响应时间：3.7秒</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 页脚 -->
+            <footer style="margin-top: 100px; padding-top: 50px; border-top: 1px solid rgba(0, 243, 255, 0.1); text-align: center;">
+                <p style="color: var(--text-dim); font-size: 0.9em;">
+                    © 3026 ABUSZAY CORE | 所有技术受跨维度专利保护
+                </p>
+                <p style="color: rgba(255, 0, 255, 0.7); font-size: 0.8em; margin-top: 10px;">
+                    警告：未经授权的维度访问可能导致时间线污染。<br>
+                    所有通讯记录将被保存在量子纠缠存储器中。
+                </p>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.timeline-content, .team-card, .value-card, .contact-item');
+            
+            const revealOnScroll = function() {
+                reveals.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            reveals.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            revealOnScroll();
+            window.addEventListener('scroll', revealOnScroll);
+            
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(' + (index % 2 === 0 ? '-50px' : '50px') + ')';
+                item.style.transition = 'opacity 0.8s ease ' + (index * 0.2) + 's, transform 0.8s ease ' + (index * 0.2) + 's';
+            });
+            
+            const bgElements = document.querySelector('.bg-elements');
+            document.addEventListener('mousemove', function(e) {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+            });
+            
+            function updateCyberTime() {
+                const now = new Date();
+                const year = now.getFullYear() + 1000; 
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                const timeElements = document.querySelectorAll('.cyber-time');
+                timeElements.forEach(el => {
+                    el.textContent = `[系统时间: ${year}-${hours}:${minutes}:${seconds}]`;
+                });
+            }
+            
+            setInterval(updateCyberTime, 1000);
+            updateCyberTime();
+            
+            console.log('🚀 ABUSZAY核心关于页面已加载');
+            console.log('🌌 当前维度: 7.3.2');
+            console.log('⚡ 量子连接: 稳定');
+        });
+    </script>
+</body>
+</html>
